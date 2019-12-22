@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfApp2.Models
+namespace ContentManagmentApp.Models
 {
     class Field
     {

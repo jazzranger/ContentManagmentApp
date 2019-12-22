@@ -1,13 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using ContentManagmentApp.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using WpfApp2.Models;
 
-namespace WpfApp2.Operations
+
+namespace ContentManagmentApp
 {
     class ApiOperations
     {
@@ -92,12 +93,11 @@ namespace WpfApp2.Operations
             var result = response.Content.ReadAsStringAsync().Result;
             var i = JsonConvert.DeserializeObject<List<Document>>(result)[0].Id;
 
-            string endpoint2 = this.baseUrl + "/api/search/basket/" + i;         
-            var response2 = await client.PostAsync(endpoint2, null);
-            var contents = await response2.Content.ReadAsStringAsync();           
-            var doc =  JsonConvert.DeserializeObject<List<Document>>(contents);
+            endpoint = this.baseUrl + "/api/search/basket/" + i;         
+            response = await client.PostAsync(endpoint, null);
+            var contents = await response.Content.ReadAsStringAsync();
 
-            return doc;
+            return JsonConvert.DeserializeObject<List<Document>>(contents);
         }
 
         public List<Document> GetList()

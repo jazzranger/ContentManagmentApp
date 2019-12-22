@@ -7,36 +7,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp2.Forms;
-using WpfApp2.Models;
-using WpfApp2.Operations;
+using ContentManagmentApp.Forms;
+using ContentManagmentApp.Models;
+using MaterialSkin.Controls;
 
-namespace WindowsFormsApp2
+namespace ContentManagmentApp.Forms
 {
-    public partial class Form1 : Form
+    public partial class LoginPage : MaterialForm
     {
-        public Form1()
+        public LoginPage()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-            ApiOperations ops = new ApiOperations();
-
-            User user = ops.Auth();
-            if (user == null)
-            {
-                MessageBox.Show("Invalid username or password");
-                return;
-            }
-
-            Globals.LoggedInUser = user;
-            MessageBox.Show("Login successful");
-
-            
             DocumentsManagment documentsManagment = new DocumentsManagment();
+            documentsManagment.Show();
 
+            //ApiOperations ops = new ApiOperations();
+
+            //User user = ops.Auth();
+            //if (user == null)
+            //{
+            //    MessageBox.Show("Invalid username or password");
+            //    return;
+            //}
+
+            //Globals.LoggedInUser = user;
+            //MessageBox.Show("Login successful");
+            //DocumentsManagment documentsManagment1 = new DocumentsManagment();
         }
     }
 }

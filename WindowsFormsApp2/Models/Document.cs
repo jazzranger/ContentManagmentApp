@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace WpfApp2.Models
+
+namespace ContentManagmentApp.Models
 {
     class Document
     {

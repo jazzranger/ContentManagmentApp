@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApp2.Forms
+﻿using System;
+
+namespace ContentManagmentApp.Forms
 {
     partial class DocumentsManagment
     {
@@ -28,12 +30,115 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.DocList = new MaterialSkin.Controls.MaterialListView();
+            this.DocumentId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DocumentName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DetailsButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.VerifyButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.RefuseButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.SuspendLayout();
+            // 
+            // DocList
+            // 
+            this.DocList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DocList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.DocumentId,
+            this.DocumentName});
+            this.DocList.Depth = 0;
+            this.DocList.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.DocList.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.DocList.FullRowSelect = true;
+            this.DocList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.DocList.HideSelection = false;
+            this.DocList.Location = new System.Drawing.Point(12, 80);
+            this.DocList.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.DocList.MouseState = MaterialSkin.MouseState.OUT;
+            this.DocList.Name = "DocList";
+            this.DocList.OwnerDraw = true;
+            this.DocList.Size = new System.Drawing.Size(553, 297);
+            this.DocList.TabIndex = 3;
+            this.DocList.UseCompatibleStateImageBehavior = false;
+            this.DocList.View = System.Windows.Forms.View.Details;
+            this.DocList.SelectedIndexChanged += new System.EventHandler(this.DocList_SelectedIndexChanged);
+            // 
+            // DocumentId
+            // 
+            this.DocumentId.Text = "Document Id";
+            this.DocumentId.Width = 150;
+            // 
+            // DocumentName
+            // 
+            this.DocumentName.Text = "Document Name";
+            this.DocumentName.Width = 200;
+            // 
+            // DetailsButton
+            // 
+            this.DetailsButton.Depth = 0;
+            this.DetailsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DetailsButton.Icon = null;
+            this.DetailsButton.Location = new System.Drawing.Point(571, 124);
+            this.DetailsButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.DetailsButton.Name = "DetailsButton";
+            this.DetailsButton.Primary = true;
+            this.DetailsButton.Size = new System.Drawing.Size(70, 36);
+            this.DetailsButton.TabIndex = 4;
+            this.DetailsButton.Text = "Details";
+            this.DetailsButton.UseVisualStyleBackColor = true;
+            this.DetailsButton.Click += new System.EventHandler(this.DetailsButton_Click);
+            // 
+            // VerifyButton
+            // 
+            this.VerifyButton.AutoSize = true;
+            this.VerifyButton.Depth = 0;
+            this.VerifyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VerifyButton.Icon = null;
+            this.VerifyButton.Location = new System.Drawing.Point(571, 184);
+            this.VerifyButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.VerifyButton.Name = "VerifyButton";
+            this.VerifyButton.Primary = true;
+            this.VerifyButton.Size = new System.Drawing.Size(70, 36);
+            this.VerifyButton.TabIndex = 5;
+            this.VerifyButton.Text = "Verify";
+            this.VerifyButton.UseVisualStyleBackColor = true;
+            this.VerifyButton.Click += new System.EventHandler(this.VerifyButton_Click);
+            // 
+            // RefuseButton
+            // 
+            this.RefuseButton.Depth = 0;
+            this.RefuseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefuseButton.Icon = null;
+            this.RefuseButton.Location = new System.Drawing.Point(571, 240);
+            this.RefuseButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.RefuseButton.Name = "RefuseButton";
+            this.RefuseButton.Primary = true;
+            this.RefuseButton.Size = new System.Drawing.Size(70, 36);
+            this.RefuseButton.TabIndex = 6;
+            this.RefuseButton.Text = "Refuse";
+            this.RefuseButton.UseVisualStyleBackColor = true;
+            this.RefuseButton.Click += new System.EventHandler(this.RefuseButton_Click);
+            // 
+            // DocumentsManagment
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.RefuseButton);
+            this.Controls.Add(this.VerifyButton);
+            this.Controls.Add(this.DetailsButton);
+            this.Controls.Add(this.DocList);
+            this.Name = "DocumentsManagment";
             this.Text = "DocumentsManagment";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+        private MaterialSkin.Controls.MaterialListView DocList;
+        private System.Windows.Forms.ColumnHeader DocumentId;
+        private System.Windows.Forms.ColumnHeader DocumentName;
+        private MaterialSkin.Controls.MaterialRaisedButton DetailsButton;
+        private MaterialSkin.Controls.MaterialRaisedButton VerifyButton;
+        private MaterialSkin.Controls.MaterialRaisedButton RefuseButton;
     }
 }
