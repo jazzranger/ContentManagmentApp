@@ -66,15 +66,15 @@ namespace ContentManagmentApp
 
         }
 
-        public async Task<Document> GetDoc(User user)
+        public async Task<Document> GetDoc(User user, int docId)
         {
-            string endpoint = this.baseUrl + "/api/document/7854/display";
+            string endpoint = this.baseUrl + "/api/document/" + docId.ToString() + "/display";
             HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, endpoint);
             string token = user.access_token;
             HttpClient client = new HttpClient();
 
             client = TokenAs(client, user);
-            HttpResponseMessage response = await client.SendAsync(message, HttpCompletionOption.ResponseHeadersRead);
+            HttpResponseMessage response = await client.SendAsync(message, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
             var result = response.Content.ReadAsStringAsync().Result;
             client.CancelPendingRequests();
             return JsonConvert.DeserializeObject<Document>(result); 
@@ -94,7 +94,7 @@ namespace ContentManagmentApp
             var i = JsonConvert.DeserializeObject<List<Document>>(result)[0].Id;
 
             endpoint = this.baseUrl + "/api/search/basket/" + i;         
-            response = await client.PostAsync(endpoint, null);
+            response = await client.PostAsync(endpoint, null).ConfigureAwait(false);
             var contents = await response.Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<List<Document>>(contents);

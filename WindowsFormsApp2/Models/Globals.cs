@@ -10,6 +10,8 @@ namespace ContentManagmentApp.Models
     {
         public static User LoggedInUser { get; set; }
 
-        public static string selectedDoc { get; set; }
+        public static Document selectedDoc { get; set; }
+
+        public static List<Document> selectedBox { get; set; }
     }
 }

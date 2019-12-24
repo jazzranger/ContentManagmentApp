@@ -18,13 +18,16 @@ namespace ContentManagmentApp.Forms
 {
     public partial class DocumentsManagment : MaterialForm
     {
+        List<Document> lettres;
         public DocumentsManagment()
         {
             InitializeComponent();
 
             ApiOperations ops = new ApiOperations();
             User user = Globals.LoggedInUser;
-            var lettres = ops.GetList();
+            //var lettres = ops.GetList();
+            lettres = ops.GetBox(user).Result;
+            Globals.selectedBox = lettres;
 
             for (int i = 0; i < lettres.Count; i++)
             {
@@ -38,7 +41,12 @@ namespace ContentManagmentApp.Forms
         {
             if(DocList.SelectedItems.Count > 0)
             {
-                Globals.selectedDoc = DocList.SelectedItems[0].Text;
+                foreach (var item in lettres)
+                {
+                    if (item.ObjectID == Int32.Parse(DocList.SelectedItems[0].Text))
+                        Globals.selectedDoc = item;
+                }
+                //Globals.selectedDoc = DocList.SelectedItems[0].Text;
                 DocumentDetails documentDetails = new DocumentDetails();
                 documentDetails.Show();
             }         
@@ -49,14 +57,5 @@ namespace ContentManagmentApp.Forms
 
         }
 
-        private void VerifyButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RefuseButton_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

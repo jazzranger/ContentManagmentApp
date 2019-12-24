@@ -34,8 +34,6 @@ namespace ContentManagmentApp.Forms
             this.DocumentId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DocumentName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DetailsButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.VerifyButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.RefuseButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SuspendLayout();
             // 
             // DocList
@@ -73,6 +71,8 @@ namespace ContentManagmentApp.Forms
             // 
             // DetailsButton
             // 
+            this.DetailsButton.AutoSize = true;
+            this.DetailsButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.DetailsButton.Depth = 0;
             this.DetailsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DetailsButton.Icon = null;
@@ -80,50 +80,17 @@ namespace ContentManagmentApp.Forms
             this.DetailsButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.DetailsButton.Name = "DetailsButton";
             this.DetailsButton.Primary = true;
-            this.DetailsButton.Size = new System.Drawing.Size(70, 36);
+            this.DetailsButton.Size = new System.Drawing.Size(75, 36);
             this.DetailsButton.TabIndex = 4;
             this.DetailsButton.Text = "Details";
             this.DetailsButton.UseVisualStyleBackColor = true;
             this.DetailsButton.Click += new System.EventHandler(this.DetailsButton_Click);
-            // 
-            // VerifyButton
-            // 
-            this.VerifyButton.AutoSize = true;
-            this.VerifyButton.Depth = 0;
-            this.VerifyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.VerifyButton.Icon = null;
-            this.VerifyButton.Location = new System.Drawing.Point(571, 184);
-            this.VerifyButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.VerifyButton.Name = "VerifyButton";
-            this.VerifyButton.Primary = true;
-            this.VerifyButton.Size = new System.Drawing.Size(70, 36);
-            this.VerifyButton.TabIndex = 5;
-            this.VerifyButton.Text = "Verify";
-            this.VerifyButton.UseVisualStyleBackColor = true;
-            this.VerifyButton.Click += new System.EventHandler(this.VerifyButton_Click);
-            // 
-            // RefuseButton
-            // 
-            this.RefuseButton.Depth = 0;
-            this.RefuseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RefuseButton.Icon = null;
-            this.RefuseButton.Location = new System.Drawing.Point(571, 240);
-            this.RefuseButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.RefuseButton.Name = "RefuseButton";
-            this.RefuseButton.Primary = true;
-            this.RefuseButton.Size = new System.Drawing.Size(70, 36);
-            this.RefuseButton.TabIndex = 6;
-            this.RefuseButton.Text = "Refuse";
-            this.RefuseButton.UseVisualStyleBackColor = true;
-            this.RefuseButton.Click += new System.EventHandler(this.RefuseButton_Click);
             // 
             // DocumentsManagment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.RefuseButton);
-            this.Controls.Add(this.VerifyButton);
             this.Controls.Add(this.DetailsButton);
             this.Controls.Add(this.DocList);
             this.Name = "DocumentsManagment";
@@ -138,7 +105,5 @@ namespace ContentManagmentApp.Forms
         private System.Windows.Forms.ColumnHeader DocumentId;
         private System.Windows.Forms.ColumnHeader DocumentName;
         private MaterialSkin.Controls.MaterialRaisedButton DetailsButton;
-        private MaterialSkin.Controls.MaterialRaisedButton VerifyButton;
-        private MaterialSkin.Controls.MaterialRaisedButton RefuseButton;
     }
 }

@@ -14,11 +14,24 @@ namespace ContentManagmentApp.Forms
 {
     public partial class DocumentDetails : MaterialForm
     {
-        string doc;
         public DocumentDetails()
         {
             InitializeComponent();
-            doc = Globals.selectedDoc;
+            var doc = Globals.selectedDoc;
+            ApiOperations ops = new ApiOperations();
+            User user = Globals.LoggedInUser;
+            var result = ops.GetDoc(user, doc.ObjectID).Result;
+
+            ListViewItem item = new ListViewItem("FileName");
+            item.SubItems.Add(result.FileName);
+            DetailsView.Items.Add(item);
+
+            for (int i = 0; i < doc.Fields.Count; i++)
+            {
+                ListViewItem val = new ListViewItem(doc.Fields[i].Title);
+                val.SubItems.Add(doc.Fields[i].Value);
+                DetailsView.Items.Add(val);
+            }
         }
     }
 }

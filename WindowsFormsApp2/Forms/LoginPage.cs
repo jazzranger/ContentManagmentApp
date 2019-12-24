@@ -22,21 +22,20 @@ namespace ContentManagmentApp.Forms
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
+            ApiOperations ops = new ApiOperations();
+
+            User user = ops.Auth();
+            if (user == null)
+            {
+                MessageBox.Show("Invalid username or password");
+                return;
+            }
+
+            Globals.LoggedInUser = user;
+            MessageBox.Show("Login successful");
+
             DocumentsManagment documentsManagment = new DocumentsManagment();
             documentsManagment.Show();
-
-            //ApiOperations ops = new ApiOperations();
-
-            //User user = ops.Auth();
-            //if (user == null)
-            //{
-            //    MessageBox.Show("Invalid username or password");
-            //    return;
-            //}
-
-            //Globals.LoggedInUser = user;
-            //MessageBox.Show("Login successful");
-            //DocumentsManagment documentsManagment1 = new DocumentsManagment();
         }
     }
 }

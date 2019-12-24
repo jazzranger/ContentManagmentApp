@@ -77,6 +77,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\User.cs" />
+    <EmbeddedResource Include="Forms\DocumentDetails.resx">
+      <DependentUpon>DocumentDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DocumentsManagment.resx">
       <DependentUpon>DocumentsManagment.cs</DependentUpon>
     </EmbeddedResource>
