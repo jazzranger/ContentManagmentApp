@@ -13,14 +13,14 @@ namespace ContentManagmentApp
     class ApiOperations
     {
         private string baseUrl;
-        string username;
-        string password;
+        //string username;
+        //string password;
         //HttpClient client;
         public ApiOperations()
         {
             this.baseUrl = "http://157.26.82.44:2240";
-            this.username = "8";
-            this.password = "admin.groupe666";
+            //this.username = "2";
+            //this.password = "admin.groupe666";
             //this.client = new HttpClient();
 
         }
@@ -39,7 +39,7 @@ namespace ContentManagmentApp
             }          
         }
 
-        public User Auth()
+        public User Auth(string username, string password)
         {
 
             string endpoint = this.baseUrl + "/token";
@@ -55,7 +55,7 @@ namespace ContentManagmentApp
             try
             {
                 var login = client.PostAsync(endpoint, new FormUrlEncodedContent(new Dictionary<string, string>
-                    { { "grant_type", "password" }, { "username", this.username }, { "password", this.password } })).Result;
+                    { { "grant_type", "password" }, { "username", username }, { "password", password } })).Result;
                 var result = login.Content.ReadAsStringAsync().Result;
                 return JsonConvert.DeserializeObject<User>(result);
             }
@@ -91,9 +91,9 @@ namespace ContentManagmentApp
             HttpResponseMessage response = await client.SendAsync(message, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 
             var result = response.Content.ReadAsStringAsync().Result;
-            var i = JsonConvert.DeserializeObject<List<Document>>(result)[0].Id;
+            var basketId = JsonConvert.DeserializeObject<List<Document>>(result)[0].Id;
 
-            endpoint = this.baseUrl + "/api/search/basket/" + i;         
+            endpoint = this.baseUrl + "/api/search/basket/" + basketId;         
             response = await client.PostAsync(endpoint, null).ConfigureAwait(false);
             var contents = await response.Content.ReadAsStringAsync();
 
@@ -105,6 +105,30 @@ namespace ContentManagmentApp
             var l = "[{\"ObjectID\":8108,\"ContentTypeID\":3534,\"FlowID\":80,\"ObjectLock\":null,\"IsDigitallySigned\":false,\"IsDistributed\":false,\"IsPendingConfirmation\":false,\"IsLastVersion\":true,\"Distributor\":null,\"TotalComments\":0,\"TotalAttachments\":0,\"TotalAlerts\":0,\"Permissions\":{\"DocumentEdit\":true,\"DocumentDelete\":false,\"DocumentDownload\":true,\"DocumentPrint\":true,\"CommentCreate\":true,\"CommentRead\":true,\"CommentUpdate\":false,\"CommentDelete\":false,\"AuditRead\":true},\"Plugins\":[],\"Fields\":[{\"DefFieldID\":0,\"Title\":\"FEtat\",\"Type\":3,\"Code\":\"FEtat\",\"Value\":\"VSignataireDeux\",\"Observations\":null,\"IsRequired\":true,\"IsVisible\":true,\"IsReadOnly\":false,\"ListElements\":null,\"RelatedFieldsCodes\":null,\"Validations\":{\"Mask\":null,\"MinVal\":null,\"MaxVal\":null,\"Scale\":null,\"MaxLength\":null}},{\"DefFieldID\":0,\"Title\":\"Somme\",\"Type\":2,\"Code\":\"FSomme\",\"Value\":\"200‘000.00\",\"Observations\":null,\"IsRequired\":true,\"IsVisible\":true,\"IsReadOnly\":false,\"ListElements\":null,\"RelatedFieldsCodes\":null,\"Validations\":{\"Mask\":null,\"MinVal\":null,\"MaxVal\":null,\"Scale\":null,\"MaxLength\":null}},{\"DefFieldID\":0,\"Title\":\"Directeur\",\"Type\":4,\"Code\":\"FDirecteur\",\"Value\":\"Hugo Bey\",\"Observations\":null,\"IsRequired\":true,\"IsVisible\":true,\"IsReadOnly\":false,\"ListElements\":null,\"RelatedFieldsCodes\":null,\"Validations\":{\"Mask\":null,\"MinVal\":null,\"MaxVal\":null,\"Scale\":null,\"MaxLength\":null}},{\"DefFieldID\":0,\"Title\":\"Responsable \",\"Type\":4,\"Code\":\"FResponsable\",\"Value\":\"Masha Responsable\",\"Observations\":null,\"IsRequired\":true,\"IsVisible\":true,\"IsReadOnly\":false,\"ListElements\":null,\"RelatedFieldsCodes\":null,\"Validations\":{\"Mask\":null,\"MinVal\":null,\"MaxVal\":null,\"Scale\":null,\"MaxLength\":null}},{\"DefFieldID\":0,\"Title\":\"Premier signataire\",\"Type\":4,\"Code\":\"FSignataire1\",\"Value\":\"Lucas Signature2\",\"Observations\":null,\"IsRequired\":true,\"IsVisible\":true,\"IsReadOnly\":false,\"ListElements\":null,\"RelatedFieldsCodes\":null,\"Validations\":{\"Mask\":null,\"MinVal\":null,\"MaxVal\":null,\"Scale\":null,\"MaxLength\":null}},{\"DefFieldID\":0,\"Title\":\"Seconde signataire\",\"Type\":4,\"Code\":\"FSignataire2\",\"Value\":\"Olivier Signateur1\",\"Observations\":null,\"IsRequired\":true,\"IsVisible\":true,\"IsReadOnly\":false,\"ListElements\":null,\"RelatedFieldsCodes\":null,\"Validations\":{\"Mask\":null,\"MinVal\":null,\"MaxVal\":null,\"Scale\":null,\"MaxLength\":null}},{\"DefFieldID\":0,\"Title\":\"Sous-validateur\",\"Type\":4,\"Code\":\"FSousValidateur\",\"Value\":\"\",\"Observations\":null,\"IsRequired\":false,\"IsVisible\":true,\"IsReadOnly\":false,\"ListElements\":null,\"RelatedFieldsCodes\":null,\"Validations\":{\"Mask\":null,\"MinVal\":null,\"MaxVal\":null,\"Scale\":null,\"MaxLength\":null}}],\"ContentType\":\"Facteur v1.15\",\"Version\":\"v1.0\",\"Author\":\"admin2 a\",\"CreationDate\":\"21.12.2019 16:05\",\"IsDeleted\":false,\"IsLastItem\":false,\"Extension\":\".PNG\"},{\"ObjectID\":8110,\"ContentTypeID\":3534,\"FlowID\":80,\"ObjectLock\":null,\"IsDigitallySigned\":false,\"IsDistributed\":false,\"IsPendingConfirmation\":false,\"IsLastVersion\":true,\"Distributor\":null,\"TotalComments\":0,\"TotalAttachments\":0,\"TotalAlerts\":0,\"Permissions\":{\"DocumentEdit\":true,\"DocumentDelete\":false,\"DocumentDownload\":true,\"DocumentPrint\":true,\"CommentCreate\":true,\"CommentRead\":true,\"CommentUpdate\":false,\"CommentDelete\":false,\"AuditRead\":true},\"Plugins\":[],\"Fields\":[{\"DefFieldID\":0,\"Title\":\"FEtat\",\"Type\":3,\"Code\":\"FEtat\",\"Value\":\"VSignataireDeux\",\"Observations\":null,\"IsRequired\":true,\"IsVisible\":true,\"IsReadOnly\":false,\"ListElements\":null,\"RelatedFieldsCodes\":null,\"Validations\":{\"Mask\":null,\"MinVal\":null,\"MaxVal\":null,\"Scale\":null,\"MaxLength\":null}},{\"DefFieldID\":0,\"Title\":\"Somme\",\"Type\":2,\"Code\":\"FSomme\",\"Value\":\"150‘000.00\",\"Observations\":null,\"IsRequired\":true,\"IsVisible\":true,\"IsReadOnly\":false,\"ListElements\":null,\"RelatedFieldsCodes\":null,\"Validations\":{\"Mask\":null,\"MinVal\":null,\"MaxVal\":null,\"Scale\":null,\"MaxLength\":null}},{\"DefFieldID\":0,\"Title\":\"Directeur\",\"Type\":4,\"Code\":\"FDirecteur\",\"Value\":\"Hugo Bey\",\"Observations\":null,\"IsRequired\":true,\"IsVisible\":true,\"IsReadOnly\":false,\"ListElements\":null,\"RelatedFieldsCodes\":null,\"Validations\":{\"Mask\":null,\"MinVal\":null,\"MaxVal\":null,\"Scale\":null,\"MaxLength\":null}},{\"DefFieldID\":0,\"Title\":\"Responsable \",\"Type\":4,\"Code\":\"FResponsable\",\"Value\":\"Masha Responsable\",\"Observations\":null,\"IsRequired\":true,\"IsVisible\":true,\"IsReadOnly\":false,\"ListElements\":null,\"RelatedFieldsCodes\":null,\"Validations\":{\"Mask\":null,\"MinVal\":null,\"MaxVal\":null,\"Scale\":null,\"MaxLength\":null}},{\"DefFieldID\":0,\"Title\":\"Premier signataire\",\"Type\":4,\"Code\":\"FSignataire1\",\"Value\":\"Lucas Signature2\",\"Observations\":null,\"IsRequired\":true,\"IsVisible\":true,\"IsReadOnly\":false,\"ListElements\":null,\"RelatedFieldsCodes\":null,\"Validations\":{\"Mask\":null,\"MinVal\":null,\"MaxVal\":null,\"Scale\":null,\"MaxLength\":null}},{\"DefFieldID\":0,\"Title\":\"Seconde signataire\",\"Type\":4,\"Code\":\"FSignataire2\",\"Value\":\"Olivier Signateur1\",\"Observations\":null,\"IsRequired\":true,\"IsVisible\":true,\"IsReadOnly\":false,\"ListElements\":null,\"RelatedFieldsCodes\":null,\"Validations\":{\"Mask\":null,\"MinVal\":null,\"MaxVal\":null,\"Scale\":null,\"MaxLength\":null}},{\"DefFieldID\":0,\"Title\":\"Sous-validateur\",\"Type\":4,\"Code\":\"FSousValidateur\",\"Value\":\"\",\"Observations\":null,\"IsRequired\":false,\"IsVisible\":true,\"IsReadOnly\":false,\"ListElements\":null,\"RelatedFieldsCodes\":null,\"Validations\":{\"Mask\":null,\"MinVal\":null,\"MaxVal\":null,\"Scale\":null,\"MaxLength\":null}}],\"ContentType\":\"Facteur v1.15\",\"Version\":\"v1.1\",\"Author\":\"admin2 a\",\"CreationDate\":\"21.12.2019 16:46\",\"IsDeleted\":false,\"IsLastItem\":false,\"Extension\":\".png\"}]";
             var doc = JsonConvert.DeserializeObject<List<Document>>(l);
             return doc;
+        }
+
+        public async Task<bool> Validate()
+        {
+            var user = Globals.LoggedInUser;
+            HttpClient client = new HttpClient();
+            client = TokenAs(client, user);
+
+            var endpoint = this.baseUrl + "/api/flow/validate/" + Globals.selectedDoc.ObjectID;
+            var response = await client.PostAsync(endpoint, null).ConfigureAwait(false);
+            var statuscode = response.IsSuccessStatusCode;
+            return statuscode;
+        }
+
+        public async Task<bool> Refuse()
+        {
+            var user = Globals.LoggedInUser;
+            HttpClient client = new HttpClient();
+            client = TokenAs(client, user);
+
+            var endpoint = this.baseUrl + "/api/flow/refuse/" + Globals.selectedDoc.ObjectID;
+            var response = await client.PostAsync(endpoint, null).ConfigureAwait(false);
+            var statuscode = response.IsSuccessStatusCode;
+            return statuscode;
         }
     }
 }

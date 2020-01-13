@@ -23,20 +23,24 @@ namespace ContentManagmentApp.Forms
         {
             InitializeComponent();
 
+            init();
+        }
+        private void init()
+        {
             ApiOperations ops = new ApiOperations();
             User user = Globals.LoggedInUser;
             //var lettres = ops.GetList();
             lettres = ops.GetBox(user).Result;
             Globals.selectedBox = lettres;
+            DocList.Items.Clear();
 
             for (int i = 0; i < lettres.Count; i++)
             {
                 ListViewItem item = new ListViewItem(lettres[i].ObjectID.ToString());
-                item.SubItems.Add("Text");
-                DocList.Items.Add(item);               
+                item.SubItems.Add("Facture");
+                DocList.Items.Add(item);
             }
         }
-
         private void DetailsButton_Click(object sender, EventArgs e)
         {
             if(DocList.SelectedItems.Count > 0)
@@ -57,5 +61,9 @@ namespace ContentManagmentApp.Forms
 
         }
 
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            init();
+        }
     }
 }

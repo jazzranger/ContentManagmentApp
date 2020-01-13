@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.RefuseButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.VerifyButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.ValidateButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.DetailsView = new MaterialSkin.Controls.MaterialListView();
             this.Property = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Value = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -50,22 +50,24 @@
             this.RefuseButton.TabIndex = 8;
             this.RefuseButton.Text = "Refuse";
             this.RefuseButton.UseVisualStyleBackColor = true;
+            this.RefuseButton.Click += new System.EventHandler(this.RefuseButton_Click);
             // 
-            // VerifyButton
+            // ValidateButton
             // 
-            this.VerifyButton.AutoSize = true;
-            this.VerifyButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.VerifyButton.Depth = 0;
-            this.VerifyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.VerifyButton.Icon = null;
-            this.VerifyButton.Location = new System.Drawing.Point(641, 101);
-            this.VerifyButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.VerifyButton.Name = "VerifyButton";
-            this.VerifyButton.Primary = true;
-            this.VerifyButton.Size = new System.Drawing.Size(66, 36);
-            this.VerifyButton.TabIndex = 7;
-            this.VerifyButton.Text = "Verify";
-            this.VerifyButton.UseVisualStyleBackColor = true;
+            this.ValidateButton.AutoSize = true;
+            this.ValidateButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ValidateButton.Depth = 0;
+            this.ValidateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ValidateButton.Icon = null;
+            this.ValidateButton.Location = new System.Drawing.Point(641, 101);
+            this.ValidateButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ValidateButton.Name = "ValidateButton";
+            this.ValidateButton.Primary = true;
+            this.ValidateButton.Size = new System.Drawing.Size(84, 36);
+            this.ValidateButton.TabIndex = 7;
+            this.ValidateButton.Text = "Validate";
+            this.ValidateButton.UseVisualStyleBackColor = true;
+            this.ValidateButton.Click += new System.EventHandler(this.ValidateButton_Click);
             // 
             // DetailsView
             // 
@@ -102,10 +104,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 514);
+            this.ClientSize = new System.Drawing.Size(850, 500);
             this.Controls.Add(this.DetailsView);
             this.Controls.Add(this.RefuseButton);
-            this.Controls.Add(this.VerifyButton);
+            this.Controls.Add(this.ValidateButton);
             this.Name = "DocumentDetails";
             this.Text = "DocumentDetails";
             this.ResumeLayout(false);
@@ -116,7 +118,7 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialRaisedButton RefuseButton;
-        private MaterialSkin.Controls.MaterialRaisedButton VerifyButton;
+        private MaterialSkin.Controls.MaterialRaisedButton ValidateButton;
         private MaterialSkin.Controls.MaterialListView DetailsView;
         private System.Windows.Forms.ColumnHeader Property;
         private System.Windows.Forms.ColumnHeader Value;

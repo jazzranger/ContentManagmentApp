@@ -24,18 +24,24 @@ namespace ContentManagmentApp.Forms
         {
             ApiOperations ops = new ApiOperations();
 
-            User user = ops.Auth();
+            var username = materialSingleLineTextField1.Text;
+            var password = materialSingleLineTextField2.Text;
+
+            User user = ops.Auth(username, password);
             if (user == null)
             {
                 MessageBox.Show("Invalid username or password");
                 return;
             }
+            else
+            {
+                Globals.LoggedInUser = user;
+                MessageBox.Show("Login successful");
 
-            Globals.LoggedInUser = user;
-            MessageBox.Show("Login successful");
-
-            DocumentsManagment documentsManagment = new DocumentsManagment();
-            documentsManagment.Show();
+                this.Hide();
+                DocumentsManagment documentsManagment = new DocumentsManagment();
+                documentsManagment.Show();
+            }           
         }
     }
 }

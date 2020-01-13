@@ -34,6 +34,7 @@ namespace ContentManagmentApp.Forms
             this.DocumentId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DocumentName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DetailsButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.RefreshButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SuspendLayout();
             // 
             // DocList
@@ -86,11 +87,29 @@ namespace ContentManagmentApp.Forms
             this.DetailsButton.UseVisualStyleBackColor = true;
             this.DetailsButton.Click += new System.EventHandler(this.DetailsButton_Click);
             // 
+            // RefreshButton
+            // 
+            this.RefreshButton.AutoSize = true;
+            this.RefreshButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.RefreshButton.Depth = 0;
+            this.RefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshButton.Icon = null;
+            this.RefreshButton.Location = new System.Drawing.Point(571, 177);
+            this.RefreshButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Primary = true;
+            this.RefreshButton.Size = new System.Drawing.Size(79, 36);
+            this.RefreshButton.TabIndex = 5;
+            this.RefreshButton.Text = "Refresh";
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
+            // 
             // DocumentsManagment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(850, 500);
+            this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.DetailsButton);
             this.Controls.Add(this.DocList);
             this.Name = "DocumentsManagment";
@@ -105,5 +124,6 @@ namespace ContentManagmentApp.Forms
         private System.Windows.Forms.ColumnHeader DocumentId;
         private System.Windows.Forms.ColumnHeader DocumentName;
         private MaterialSkin.Controls.MaterialRaisedButton DetailsButton;
+        private MaterialSkin.Controls.MaterialRaisedButton RefreshButton;
     }
 }

@@ -14,11 +14,13 @@ namespace ContentManagmentApp.Forms
 {
     public partial class DocumentDetails : MaterialForm
     {
+        ApiOperations ops;
+
         public DocumentDetails()
         {
             InitializeComponent();
             var doc = Globals.selectedDoc;
-            ApiOperations ops = new ApiOperations();
+            ops = new ApiOperations();
             User user = Globals.LoggedInUser;
             var result = ops.GetDoc(user, doc.ObjectID).Result;
 
@@ -32,6 +34,22 @@ namespace ContentManagmentApp.Forms
                 val.SubItems.Add(doc.Fields[i].Value);
                 DetailsView.Items.Add(val);
             }
+        }
+
+        private void RefuseButton_Click(object sender, EventArgs e)
+        {
+            if(ops.Refuse().Result)
+                MessageBox.Show("Document is refuse");
+            else
+                MessageBox.Show("Document is not refuse");
+        }
+
+        private void ValidateButton_Click(object sender, EventArgs e)
+        {
+            if (ops.Validate().Result)
+                MessageBox.Show("Document is validate");
+            else
+                MessageBox.Show("Document is not validate");
         }
     }
 }

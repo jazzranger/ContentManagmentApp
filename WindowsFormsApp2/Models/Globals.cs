@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContentManagmentApp.Models
 {
-    class Globals
+    static class Globals
     {
         public static User LoggedInUser { get; set; }
 
